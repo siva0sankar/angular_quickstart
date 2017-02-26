@@ -1,0 +1,26 @@
+<h1>{{name}}</h1>
+  <p>Address : {{address.street}},{{address.city}}</p>
+  <button (click) = "toggleLang()">{{showLang ? "Hide Lang" : "Show Lang"}}</button>
+  <div *ngIf="showLang">
+    <h3>Languages:</h3>
+    <ul>
+            <li *ngFor="let lang of language; let i = index">
+            {{lang}} <button (click)="deleteLang(i)" >X</button>
+            </li>
+    </ul>
+    <form (submit)="addLang(lang.value)">
+        <label> Add Language : </label> 
+        <input type="text" #lang />
+
+    </form>
+  </div>
+<hr/>
+  <form>
+            <label>Name : </label>
+            <input type="text" name="name" [(ngModel)]="name"/>
+  </form>
+<hr/>
+<div *ngFor="let post of posts">
+    <h3>{{post.title}}</h3>
+    <p>{{post.body}}</p>
+</div>
